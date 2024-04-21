@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        nav{
+            display: flex;
+            justify-content: space-between;
+            background-color: blueviolet;
+            height: 80px;
+            padding: 0 25%;
+        }
+        nav li{
+            list-style: none;
+
+            margin-top: 20px;
+
+        }
+
+        nav a{
+            text-decoration: none;
+
+            color: aqua;
+        }
+
+        a:hover{
+
+        color: black;
+
+        }
+        #banner{
+
+        height: 70%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: burlywood;
+        
+
+    }
+
+     #product-item{
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         background-color: burlywood;
+     }
+     .product-card{
+
+        width: 200px;
+
+        height: 400px;
+
+        border-radius: 20px;
+ 
+        overflow: hidden;
+
+        
+     }
+
+     .product-card img{
+        width: 100%;
+
+        height: 60%;
+      
+        
+        
+     }
+
+     .product-card h3{
+  
+      margin: 0px 10px;
+
+      text-align: center;
+
+
+     }
+
+     .product-card p{
+
+        text-align: center;
+     }
+     
+     footer{
+        height: 80px;
+        background-color: black;
+        color: white;
+        
+     }
+
+     footer p{
+        text-align: center;
+        padding-top: 20px;
+     }
+    </style>
+</head>
+<body>
+    <nav>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About us</a></li>
+    <li><a href="#">Email</a></li>
+    </nav>
+    <section id="banner">
+    <img src="71YXzeOuslL._AC_UY879_.jpg">
+    </section>
+    <section id="product-item">
+    </section>
+    <footer><p>© copyright 2024</p></footer>
+    <script>
+    const productItem = document.querySelector('#product-item');
+    fetch("https://fakestoreapi.com/products")
+         .then(res=>res.json())
+         .then(data=>{
+            data.map((e)=>{
+                productItem.innerHTML+=`<div class="product-card">
+        <img src=${e.image} alt="">
+        <h3>${e.title}</h3>
+        <p>${e.price}$</p>
+    </div>`
+            })
+         })
+
+
+    </script>
+</body>
+</html>
